@@ -42,6 +42,12 @@ namespace Ada.Base.Data
             return cadenaConexion;
         }
 
+        /// <summary>
+        /// Inserta registros en la base de datos
+        /// </summary>
+        /// <param name="objeto">Definición del objeto</param>
+        /// <param name="definicion">Datos</param>
+        /// <returns>Entero, 1 es satisfactorio</returns>
         public virtual int Insertar(T objeto, U definicion)
         {
             int resultado = 0;
@@ -68,7 +74,13 @@ namespace Ada.Base.Data
                 throw;
             }
         }
-                
+
+        /// <summary>
+        /// Actualiza registros en la base de datos
+        /// </summary>
+        /// <param name="objeto">Definición del objeto</param>
+        /// <param name="definicion">Datos</param>
+        /// <returns>Entero, 1 es satisfactorio</returns>
         public virtual int Actualizar(T objeto, U definicion)
         {
             int resultado = 0;
@@ -97,6 +109,12 @@ namespace Ada.Base.Data
             }
         }
 
+        /// <summary>
+        /// Elimina registros en la base de datos
+        /// </summary>
+        /// <param name="objeto">Definición del objeto</param>
+        /// <param name="definicion">Datos</param>
+        /// <returns>Entero, 1 es satisfactorio</returns>
         public virtual int Eliminar(T objeto, U definicion)
         {
             int resultado = 0;
@@ -126,6 +144,12 @@ namespace Ada.Base.Data
             }
         }
 
+        /// <summary>
+        /// Consulta registros en la base de datos con filtros
+        /// </summary>
+        /// <param name="objeto">Definición del objeto</param>
+        /// <param name="definicion">Datos</param>
+        /// <returns>Retorna el objeto modificado</returns>
         public virtual U Consultar(T objeto, ref U definicion)
         {
             U objetoResultante = (U)Activator.CreateInstance(definicion.GetType(), true);
@@ -176,6 +200,12 @@ namespace Ada.Base.Data
             }
         }
 
+        /// <summary>
+        /// Lista todos los registros de un objeto dado. No hay filtros
+        /// </summary>
+        /// <param name="objeto">Definición del objeto</param>
+        /// <param name="definicion">Datos</param>
+        /// <returns>Retorna una lista de objetos según la definición indicada</returns>
         public virtual List<U> Listar(T objeto, U definicion)
         {
             List<U> listaResultante = (List<U>)Activator.CreateInstance(typeof(List<U>), true);
