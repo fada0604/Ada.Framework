@@ -132,7 +132,7 @@ namespace Ada.Base.Data
             try
             {
 
-
+                //prueba
                 SqlConnection cnn = new SqlConnection(cadenaConexion);
                 using (cnn)
                 {
