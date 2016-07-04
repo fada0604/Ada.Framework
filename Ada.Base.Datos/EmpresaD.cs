@@ -15,6 +15,7 @@ namespace Ada.Base.Data
             nombreSPActualizar = "spActualizarEmpresa";
             nombreSPConsultar = "spConsultarEmpresa";
             nombreSPEliminar = "spEliminarEmpresa";
+            nombreSPListar = "spListarEmpresas";
         }
 
         public override int Insertar(EmpresaD objeto, EmpresaBO definicion)
@@ -30,6 +31,11 @@ namespace Ada.Base.Data
         public override EmpresaBO Consultar(EmpresaD objeto, ref EmpresaBO definicion)
         {
             return base.Consultar(objeto, ref definicion);
+        }
+
+        public override List<EmpresaBO> Listar(EmpresaD objeto, EmpresaBO definicion)
+        {
+            return base.Listar(objeto, definicion);
         }
     }
 }

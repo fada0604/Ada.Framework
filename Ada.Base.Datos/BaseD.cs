@@ -20,6 +20,7 @@ namespace Ada.Base.Data
         public String nombreSPActualizar { get; set; }
         public String nombreSPConsultar { get; set; }
         public String nombreSPEliminar { get; set; }
+        public String nombreSPListar { get; set; }
         #endregion
 
 
@@ -131,8 +132,6 @@ namespace Ada.Base.Data
             
             try
             {
-
-                //prueba
                 SqlConnection cnn = new SqlConnection(cadenaConexion);
                 using (cnn)
                 {
@@ -177,6 +176,67 @@ namespace Ada.Base.Data
             }
         }
 
+        public virtual List<U> Listar(T objeto, U definicion)
+        {
+            List<U> listaResultante = (List<U>)Activator.CreateInstance(typeof(List<U>), true);
+
+            try
+            {
+                SqlConnection cnn = new SqlConnection(cadenaConexion);
+                using (cnn)
+                {
+
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(nombreSPListar, cnn);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    
+                    var lectura = cmd.ExecuteReader();
+
+                    if (lectura.HasRows)
+                    {
+                        while (lectura.Read())
+                        {
+                            DataTable esquemaTabla = lectura.GetSchemaTable();
+
+                            var query = from datos in esquemaTabla.AsEnumerable()
+                                        select new
+                                        {
+                                            id = datos.Field<int>("ColumnOrdinal"),
+                                            nombre = datos.Field<string>("ColumnName")
+                                        };
+
+                            var propiedades = definicion.GetType().GetProperties();
+                            U objetoResultante = (U)Activator.CreateInstance(definicion.GetType(), true);
+
+                            foreach (var fila in query)
+                            {
+
+                                propiedades.Where(a => a.Name.Equals(fila.nombre)).FirstOrDefault().SetValue(objetoResultante, lectura[fila.id]);
+                            }
+
+                            listaResultante.Add(objetoResultante);
+                        }
+                    }
+
+                    cnn.Close();
+                }
+
+                return listaResultante;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+                
+        }
+
+
+        /// <summary>
+        /// Retorna los campos formateados a fin de que viajen a la base de datos con el arroba, la inicial del tipo de datos y el nombre del campo
+        /// </summary>
+        /// <param name="nombreCampo">Nombre del campo</param>
+        /// <param name="tipo">Tipo de datos</param>
+        /// <returns>Retorna el string formateado</returns>
         private String RetornarNombreCampoFormateado(String nombreCampo, Enumerados.TipoDatos tipo)
         {
             String resultado = "";
@@ -211,7 +271,7 @@ namespace Ada.Base.Data
         }
 
         /// <summary>
-        /// Método encargado de agregar los parámetros en el command de forma dinámica
+        /// Método encargado de agregar los parámetros en el comando de forma dinámica
         /// </summary>
         /// <param name="definicion">BO del cual se van a recuperar las propiedades</param>
         /// <param name="cmd">Comando</param>

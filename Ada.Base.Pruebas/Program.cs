@@ -14,9 +14,9 @@ namespace Ada.Base.Pruebas
         {
             EmpresaD obj = new EmpresaD();
             EmpresaBO def = new EmpresaBO();
-            def.RazonSocial = "prueba2";
-            def.Rif = "J123454581";
-            obj.Consultar(obj, ref def);
+            //def.RazonSocial = "prueba2";
+            //def.Rif = "J123454581";
+            var x =  obj.Listar(obj, def);
             Console.ReadLine(); 
         }
     }
