@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ada.Base.BusinessObject", "Ada.Base.BusinessObject\Ada.Base.BusinessObject.csproj", "{6075D1E2-884B-4249-9D57-9E20E4780F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ada.Base.Data", "Ada.Base.Datos\Ada.Base.Data.csproj", "{5BC84BC9-22C5-4F54-A280-D039DE64C1FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ada.Base.Pruebas", "Ada.Base.Pruebas\Ada.Base.Pruebas.csproj", "{709289A7-5D62-494A-8690-BD7C7F14DB8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6075D1E2-884B-4249-9D57-9E20E4780F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6075D1E2-884B-4249-9D57-9E20E4780F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6075D1E2-884B-4249-9D57-9E20E4780F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6075D1E2-884B-4249-9D57-9E20E4780F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC84BC9-22C5-4F54-A280-D039DE64C1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC84BC9-22C5-4F54-A280-D039DE64C1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC84BC9-22C5-4F54-A280-D039DE64C1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC84BC9-22C5-4F54-A280-D039DE64C1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709289A7-5D62-494A-8690-BD7C7F14DB8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709289A7-5D62-494A-8690-BD7C7F14DB8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709289A7-5D62-494A-8690-BD7C7F14DB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709289A7-5D62-494A-8690-BD7C7F14DB8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
