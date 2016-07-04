@@ -134,6 +134,7 @@ namespace Ada.Base.Data
                 SqlConnection cnn = new SqlConnection(cadenaConexion);
                 using (cnn)
                 {
+
                     cnn.Open();
                     SqlCommand cmd = new SqlCommand(nombreSPConsultar, cnn);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
