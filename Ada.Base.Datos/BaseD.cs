@@ -22,8 +22,7 @@ namespace Ada.Base.Data
         public String nombreSPEliminar { get; set; }
         public String nombreSPListar { get; set; }
         #endregion
-
-
+        
         #region Constructores
         public BaseD()
         {
@@ -68,10 +67,17 @@ namespace Ada.Base.Data
 
                 return resultado;
             }
+            catch (ExcepcionesPersonalizadas)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error ingresando registros en la base de datos.", new Exception("Capa -> Data. Método -> Insertar"));
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error ingresando registros en la base de datos.", new Exception(sqlEx.InnerException + "Capa -> Data. Método -> Insertar"));
+            }
             catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Error general, BaseD", ex.InnerException);
             }
         }
 
@@ -102,10 +108,17 @@ namespace Ada.Base.Data
 
                 return resultado;
             }
+            catch (ExcepcionesPersonalizadas)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error actualizando registros en la base de datos.", new Exception("Capa -> Data. Método -> Actualizar"));
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error actualizando registros en la base de datos.", new Exception(sqlEx.InnerException + "Capa -> Data. Método -> Actualizar"));
+            }
             catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Error general, BaseD", ex.InnerException);
             }
         }
 
@@ -137,10 +150,17 @@ namespace Ada.Base.Data
 
                 return resultado;
             }
+            catch (ExcepcionesPersonalizadas)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error eliminando registros en la base de datos.", new Exception("Capa -> Data. Método -> Eliminar"));
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error eliminando registros en la base de datos.", new Exception(sqlEx.InnerException + "Capa -> Data. Método -> Eliminar"));
+            }
             catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Error general, BaseD", ex.InnerException);
             }
         }
 
@@ -194,9 +214,17 @@ namespace Ada.Base.Data
                 }
                 return objetoResultante;
             }
+            catch (ExcepcionesPersonalizadas)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error consultando registros en la base de datos.", new Exception("Capa -> Data.  Método -> Consultar"));
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error consultando registros en la base de datos.", new Exception(sqlEx.InnerException + "Capa -> Data. Método -> Consultar"));
+            }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error general, BaseD", ex.InnerException);
             }
         }
 
@@ -253,11 +281,18 @@ namespace Ada.Base.Data
 
                 return listaResultante;
             }
+            catch (ExcepcionesPersonalizadas)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error listando registros en la base de datos.", new Exception("Capa -> Data.  Método -> Listar"));
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new ExcepcionesPersonalizadas("Se ha producido un error listando registros en la base de datos.", new Exception(sqlEx.InnerException + "Capa -> Data. Método -> Listar"));
+            }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error general, BaseD", ex.InnerException);
             }
-                
         }
 
 
